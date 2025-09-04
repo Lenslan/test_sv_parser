@@ -1,5 +1,5 @@
-module driver (in, out, en);
-input wire [3-1:0] in;
+module driver (in1, in2, out, en);
+input wire [3-1:0] in1, in2;
 output reg [3:0] out;
 input en;
 bufif0 ar[3:0] (out, in, en); // array of three-state buffers
