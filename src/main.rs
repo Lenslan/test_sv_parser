@@ -120,17 +120,21 @@ fn extract_nonansi_ports(node: &RefNode, syntax_tree: &SyntaxTree) {
             let mut width_str = "None-width".to_string();
             let mut port_name = "None-name";
 
-            for port in unwrap_node!(item, PortDeclaration, PackedDimension, ListOfPortIdentifiers).into_iter() {
-                match port {
-                    RefNode::PortDeclaration(port_dir) => {
-                        direction_str = direction_to_str(port_dir);
-                    },
-                    RefNode::PackedDimension(port_dimension) => {
-                        println!("port {} 's dimension is : {}", direction_str, RefNode::from(port_dimension));
-                    }
-                    _ => {}
-                }
-            }
+            println!("phase 1 start --------------------------- cur node {}", item);
+
+            // for port in unwrap_node!(item, PortDeclaration, PackedDimension, ListOfPortIdentifiers).into_iter().flatten() {
+            //     match port {
+            //         RefNode::PortDeclaration(port_dir) => {
+            //             direction_str = direction_to_str(port_dir);
+            //             println!("update port direction");
+            //         },
+            //         RefNode::PackedDimension(port_dimension) => {
+            //             println!("port {} 's dimension is : {}", direction_str, RefNode::from(port_dimension));
+            //         }
+            //         _ => {}
+            //     }
+            // }
+
             // match unwrap_node!(item, PortDeclaration, PackedDimension, ListOfPortIdentifiers) {
             //     None => {}
             //     Some(RefNode::PortDeclaration(port_direction)) => {
@@ -158,6 +162,7 @@ fn extract_nonansi_ports(node: &RefNode, syntax_tree: &SyntaxTree) {
             // }
         // }
     }
+    println!("Module item extract end ************")
 }
 
 
